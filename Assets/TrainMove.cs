@@ -5,10 +5,11 @@ using UnityEngine;
 public class TrainMove : MonoBehaviour
 {
     [SerializeField] float trainspeed = 1;
+    GameManager manager;
     // Start is called before the first frame update
     void Start()
     {
-        
+        manager = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
@@ -21,7 +22,7 @@ public class TrainMove : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            Destroy(other.gameObject);
+            manager.Die();
         }
     }
 }
