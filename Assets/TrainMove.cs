@@ -17,11 +17,11 @@ public class TrainMove : MonoBehaviour
         transform.position += new Vector3(1, 0) * trainspeed * Time.deltaTime;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
-            Destroy(other.gameObject);
+            Destroy(gameObject);
         }
     }
 }
