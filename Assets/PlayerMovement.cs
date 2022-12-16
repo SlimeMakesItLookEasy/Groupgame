@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField]
-    float playerSpeed = 7.5f;
+    public Rigidbody2D rb2d;
+    [SerializeField] float playerSpeed = 7.5f;
     [SerializeField] float slideSpeed = 10f;
-    float jumpForce = 3.5f;
-    Rigidbody2D rb;
+    [SerializeField] float jumpForce = 3.5f;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -21,28 +21,28 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.A))
         {
-            transform.position -= Vector3.right * playerSpeed * Time.deltaTime;
+            rb2d.AddForce(Vector3.left * playerSpeed * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.D))
         {
-            transform.position += Vector3.right * playerSpeed * Time.deltaTime;
+            rb2d.AddForce(Vector3.right * playerSpeed * Time.deltaTime);
         }
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            transform.position += Vector3.up * jumpForce * Time.deltaTime;
+            rb2d.AddForce(Vector3.up * jumpForce);
         }
         
         if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D))
         {
             
-            transform.position += Vector3.right * slideSpeed * playerSpeed * Time.deltaTime;
+            rb2d.AddForce(Vector3.right * slideSpeed * playerSpeed * Time.deltaTime);
             transform.eulerAngles = new Vector3(0, 0, 60);
             
         }
         if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A))
         {
 
-            transform.position -= Vector3.right * slideSpeed * playerSpeed * Time.deltaTime;
+            rb2d.AddForce(Vector3.left * slideSpeed * playerSpeed * Time.deltaTime);
             transform.eulerAngles = new Vector3(0, 0, -60);
 
         }
@@ -51,4 +51,12 @@ public class PlayerMovement : MonoBehaviour
             transform.eulerAngles = new Vector3 (0, 0, 0);
         }
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Train")
+        {
+            Destroy(gameObject);
+        }
+    }
 }
+
