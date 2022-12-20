@@ -6,7 +6,7 @@ public class TrainMove : MonoBehaviour
 {
     [SerializeField] float trainspeed = 1;
     GameManager manager;
-    Rigidbody2D rb2d;
+    Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,8 +16,8 @@ public class TrainMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        rb2d.AddForce(Vector3.right * trainspeed * Time.deltaTime);
+        transform.position += new Vector3(1, 0) * trainspeed * Time.deltaTime;
+        rb.AddForce(Vector3.right * trainspeed * Time.deltaTime);
     }
 
     

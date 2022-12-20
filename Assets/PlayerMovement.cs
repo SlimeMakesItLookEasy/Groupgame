@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float playerSpeed = 7.5f;
     [SerializeField] float slideSpeed = 10f;
     [SerializeField] float jumpForce = 3.5f;
+    [SerializeField] TextMeshProUGUI score;
+    [SerializeField] int point;
     
 
     // Start is called before the first frame update
@@ -56,6 +59,12 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.tag == "Train")
         {
             Destroy(gameObject);
+        }
+        else if (collision.gameObject.tag == "Coin")
+        {
+            Destroy(collision.gameObject);
+            point += 1;
+            score.text = "Point: " + point;
         }
     }
 }
