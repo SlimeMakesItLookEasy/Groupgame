@@ -60,7 +60,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Train")
+        if (collision.gameObject.tag == "Train" || collision.gameObject.tag == "Hinder")
         {
             Destroy(gameObject);
         }
@@ -75,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
         Destroy(collision.gameObject);
         if (collision.gameObject.tag == "Coin")
         {
-            point = +pointValue;
+            point += pointValue;
             score.text = "Point: " + point;
         }
         else if (collision.gameObject.tag == "jumpPower")
