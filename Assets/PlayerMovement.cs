@@ -5,6 +5,7 @@ using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public bool jump = true;
     public Rigidbody2D rb2d;
     [SerializeField] float playerSpeed = 7.5f;
     [SerializeField] float slideSpeed = 10f;
@@ -30,9 +31,10 @@ public class PlayerMovement : MonoBehaviour
         {
             rb2d.AddForce(Vector3.right * playerSpeed * Time.deltaTime);
         }
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && jump == true)
         {
             rb2d.AddForce(Vector3.up * jumpForce);
+            jump = false;
         }
         
         if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D))
@@ -71,6 +73,11 @@ public class PlayerMovement : MonoBehaviour
             Time.timeScale = 0.5f;
             
         }
+        else
+        {
+            jump = true;
+        }
     }
+
 }
 
