@@ -71,7 +71,7 @@ public class PlayerMovement : MonoBehaviour
         Destroy(collision.gameObject);
         if (collision.gameObject.tag == "Coin")
         {
-            point =+ pointValue;
+            point = +pointValue;
             score.text = "Point: " + point;
         }
         else if (collision.gameObject.tag == "jumpPower")
@@ -85,10 +85,12 @@ public class PlayerMovement : MonoBehaviour
         else if (collision.gameObject.tag == "pointPower")
         {
             pointValue *= 2;
+        }
+
         else if (collision.gameObject.tag == "Hinder")
         {
             Time.timeScale = 0.5f;
-            
+
         }
         else
         {
@@ -97,4 +99,6 @@ public class PlayerMovement : MonoBehaviour
     }
 
 }
+        
+
 
