@@ -64,7 +64,11 @@ public class PlayerMovement : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        
+        else
+        {
+            jump = true;
+        }
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -91,10 +95,6 @@ public class PlayerMovement : MonoBehaviour
         {
             Time.timeScale = 0.5f;
 
-        }
-        else
-        {
-            jump = true;
         }
     }
 
