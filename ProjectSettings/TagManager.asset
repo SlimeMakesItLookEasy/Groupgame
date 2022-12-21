@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Train
   - Coin
+  - Hinder
   layers:
   - Default
   - TransparentFX

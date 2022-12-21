@@ -66,6 +66,11 @@ public class PlayerMovement : MonoBehaviour
             point += 1;
             score.text = "Point: " + point;
         }
+        else if (collision.gameObject.tag == "Hinder")
+        {
+            Time.timeScale = 0.5f;
+            
+        }
     }
 }
 
