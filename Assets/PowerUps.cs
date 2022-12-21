@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PowerUps : MonoBehaviour
 {
-    int randomizer;
+    [SerializeField] int randomizer;
     SpriteRenderer sprite;
     List<Color> colorchoose;
     // Start is called before the first frame update
@@ -20,16 +20,27 @@ public class PowerUps : MonoBehaviour
         randomizer = Random.Range(0, 3);
         sprite.color = colorchoose[randomizer];
 
+        if (randomizer == 0)
+        {
+            gameObject.tag = "jumpPower";
+        }
+        else if (randomizer == 1)
+        {
+            gameObject.tag = "speedPower";
+        }
+        else if (randomizer == 2)
+        {
+            gameObject.tag = "pointPower";
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         
-        
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    /*private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")
         {
@@ -38,6 +49,14 @@ public class PowerUps : MonoBehaviour
             {
 
             }
+            else if (randomizer == 2)
+            {
+                pointPower *= 2;
+            }
+            else if (randomizer == 3)
+            {
+
+            }
         }
-    }
+    }*/
 }

@@ -10,13 +10,15 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float slideSpeed = 10f;
     [SerializeField] float jumpForce = 3.5f;
     [SerializeField] TextMeshProUGUI score;
-    [SerializeField] int point;
+    [SerializeField] float point = 0;
+    float pointValue = 1;
+    
     
 
     // Start is called before the first frame update
     void Start()
     {
-        
+       
     }
 
     // Update is called once per frame
@@ -60,11 +62,27 @@ public class PlayerMovement : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        else if (collision.gameObject.tag == "Coin")
+        
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Destroy(collision.gameObject);
+        if (collision.gameObject.tag == "Coin")
         {
-            Destroy(collision.gameObject);
-            point += 1;
+            point =+ pointValue;
             score.text = "Point: " + point;
+        }
+        else if (collision.gameObject.tag == "jumpPower")
+        {
+            jumpForce *= 1.25f;
+        }
+        else if (collision.gameObject.tag == "speedPower")
+        {
+            playerSpeed *= 1.25f;
+        }
+        else if (collision.gameObject.tag == "pointPower")
+        {
+            pointValue *= 2;
         }
     }
 }
