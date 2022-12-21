@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float slideSpeed = 10f;
     [SerializeField] float jumpForce = 3.5f;
     [SerializeField] TextMeshProUGUI score;
+    [SerializeField] TextMeshProUGUI Extra;
     [SerializeField] float point = 0;
     float pointValue = 1;
     
@@ -63,6 +64,7 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.tag == "Train" || collision.gameObject.tag == "Hinder")
         {
             Destroy(gameObject);
+            Extra.text = "Game Over";
         }
         else
         {
@@ -90,11 +92,9 @@ public class PlayerMovement : MonoBehaviour
         {
             pointValue *= 2;
         }
-
-        else if (collision.gameObject.tag == "Hinder")
+        else if (collision.gameObject.tag == "Finish")
         {
-            Time.timeScale = 0.5f;
-
+            Extra.text = "wow du vann";
         }
     }
 
