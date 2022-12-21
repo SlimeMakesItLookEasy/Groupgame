@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Train
   - Coin
+  - jumpPower
+  - speedPower
+  - pointPower
   - Hinder
   layers:
   - Default
