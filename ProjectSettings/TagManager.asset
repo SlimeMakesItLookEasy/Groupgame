@@ -9,6 +9,7 @@ TagManager:
   - jumpPower
   - speedPower
   - pointPower
+  - Hinder
   layers:
   - Default
   - TransparentFX

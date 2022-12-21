@@ -83,6 +83,10 @@ public class PlayerMovement : MonoBehaviour
         else if (collision.gameObject.tag == "pointPower")
         {
             pointValue *= 2;
+        else if (collision.gameObject.tag == "Hinder")
+        {
+            Time.timeScale = 0.5f;
+            
         }
     }
 }
